@@ -1,0 +1,13 @@
+---
+
+  - name: PLAY 1 - VLAN CREATION
+    hosts: all
+    connection: network_cli
+    gather_facts: no
+
+    tasks:
+
+      - name: TASK 1 - LIST OF COMMANS
+        ios_config:
+          commands:
+            - vlan 11
