@@ -6,9 +6,9 @@
     - name: Wykonaj komendę show running-config
       cisco.ios.ios_command:
         commands:
-          - do show running-config
-      register: utput
+          - show running-config all
+      register: running_config_output
 
     - name: Pokaż running-config w output
       debug:
-        var: output
+        var: running_config_output.stdout
