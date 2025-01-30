@@ -1,0 +1,11 @@
+- name: Sprawdzenie dostępnych kolekcji Ansible
+  hosts: localhost
+  gather_facts: no
+  tasks:
+    - name: Wyświetlenie zainstalowanych kolekcji
+      ansible.builtin.command: ansible-galaxy collection list
+      register: collections_output
+    
+    - name: Wyświetlenie wyniku
+      debug:
+        msg: "{{ collections_output.stdout_lines }}"
