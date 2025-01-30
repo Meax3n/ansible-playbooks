@@ -1,0 +1,14 @@
+---
+- name: Pobierz running-config z urządzeń
+  hosts: all
+  gather_facts: no  # Zbieranie faktów nie jest potrzebne, więc wyłączamy
+  tasks:
+    - name: Wykonaj komendę show running-config
+      cisco.ios.ios_command:
+        commands:
+          - show running-config
+      register: running_config_output
+
+    - name: Pokaż running-config w output
+      debug:
+        var: running_config_output.stdout
