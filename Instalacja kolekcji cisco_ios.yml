@@ -1,0 +1,11 @@
+- name: Instalacja kolekcji cisco.ios
+  hosts: localhost
+  gather_facts: no
+  tasks:
+    - name: Instalacja kolekcji cisco.ios
+      ansible.builtin.command: ansible-galaxy collection install cisco.ios
+      register: install_output
+
+    - name: Wyświetlenie wyniku instalacji
+      debug:
+        msg: "{{ install_output.stdout_lines }}"
