@@ -3,12 +3,13 @@
   hosts: all
   gather_facts: no  # Zbieranie faktów nie jest potrzebne, więc wyłączamy
   tasks:
-    - name: Wykonaj komendę show running-config
-      cisco.ios.ios_command:
-        commands:
-          - show running-config
-      register: running_config_output
-
-    - name: Pokaż running-config w output
-      debug:
-        var: running_config_output.stdout
+  
+    - name: COLLECT ONLY THE CONFIG AND DEFFAULT FACTS
+       ios_facts:
+         gather_subset:
+           - config
+       register: config
+       
+    - name: VIEW CONFIG
+       debug:
+         var: config
