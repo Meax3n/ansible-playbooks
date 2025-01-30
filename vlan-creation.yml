@@ -6,7 +6,6 @@
     gather_facts: no
 
     tasks:
-
       - name: TASK 1 - LIST OF COMMANS
         ios_config:
           commands:
